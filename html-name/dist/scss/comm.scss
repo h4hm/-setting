@@ -1,0 +1,16 @@
+@charset "UTF-8";
+@import "fonts", "reset", "main", "contents";
+
+.wrap {
+  height: 1200px;
+  margin: 0 auto;
+
+  header {
+    height: 100px;
+    background-color: red;
+  }
+  .slide {
+    height: 300px;
+    background-color: blue;
+  }
+}
