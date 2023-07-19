@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import "fonts", "reset", "main", "contents";
+@import "variables", "mixin", "fonts", "reset", "main", "contents";
 
 // comm.css - 공통요소
 // 공통요소 : 헤더, 풋터, 버튼, 아이콘, 박스
@@ -11,32 +11,75 @@
 
 // 헤더
 #header {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid $b;
+
   .inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 70px;
   }
-  .lst-util {
+
+  .head__right {
     display: flex;
-    .btn-g {
-      width: 30px;
-      height: 70px;
-      &:before {
-        font-size: 20px;
-        font-family: "Font Awesome 6 free";
+
+    .lst-util {
+      display: flex;
+      li {
+        display: flex;
       }
     }
 
-    .btn-search::before {
-      content: "\f002";
-      font-weight: 900;
+    .btn-g,
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 70px;
     }
 
-    .btn-mypage::before {
-      content: "\f007";
-      font-weight: 400;
+    .material-icons-outlined {
+      font-size: 34px;
     }
   }
 }
+
+.gnb-wrap {
+  .input-burger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  .label-burger {
+    .bar {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: red;
+    }
+  }
+  #gnb {
+    display: none;
+  }
+}
+
+// Font AWESOME 사용시
+// .btn-g {
+//   &:before {
+//     font-size: 20px;
+//     font-family: "Font Awesome 6 free";
+//   }
+// }
+// .btn-search::before {
+//   content: "\f002";
+//   font-weight: 900;
+// }
+
+// .btn-mypage::before {
+//   content: "\f007";
+//   font-weight: 400;
+// }
