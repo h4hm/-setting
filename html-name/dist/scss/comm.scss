@@ -14,13 +14,13 @@
 
 // 헤더
 #header {
+  position: relative;
+  z-index: 1000;
   border-bottom: 1px solid $b;
-
   .inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 70px;
   }
 
   .head__right {
@@ -39,7 +39,7 @@
       justify-content: center;
       align-items: center;
       width: 40px;
-      height: 70px;
+      height: $headerHeight;
     }
 
     .material-icons-outlined {
@@ -47,7 +47,10 @@
     }
   }
 }
-
+#logo {
+  position: relative;
+  z-index: 1100;
+}
 .gnb-wrap {
   .input-burger {
     position: absolute;
@@ -56,17 +59,63 @@
     width: 0;
     height: 0;
     opacity: 0;
+    &:checked {
+      // input이 checked 됐을 때
+      & + label {
+        .bar {
+          &:nth-child(2) {
+            transform: rotate(45deg) translate(8px, 8px);
+          }
+          &:nth-child(3) {
+            opacity: 0;
+          }
+          &:nth-child(4) {
+            transform: rotate(-45deg) translate(6px, -6px);
+          }
+        }
+      }
+      & ~ #gnb {
+        right: 0;
+      }
+    }
   }
+
   .label-burger {
+    position: relative;
+    z-index: 1100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 40px;
+    height: $headerHeight;
     .bar {
       display: block;
       width: 26px;
       height: 2px;
-      background: red;
+      background: $txtDefault;
+      transition: all 0.2s;
+    }
+    span {
+      &:nth-child(3) {
+        margin: 8px 0;
+      }
     }
   }
   #gnb {
-    display: none;
+    position: fixed;
+    top: 0;
+    // 오른쪽을 기준으로 튀어나와야함
+    right: -100%;
+    bottom: 0;
+    // bottom 0 말고 가로 100% 세로 100% 해도됨
+    width: 100%;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $prim1;
+    transition: all 0.3s;
   }
 }
 
@@ -106,9 +155,26 @@
         position: relative;
         overflow: hidden;
         width: 100%;
-        height: 200px;
-        padding-top: 100%;
         border-radius: 4px;
+        // 가상공간으로 크기잡아주기
+        &::before {
+          content: "";
+          display: block;
+          height: 0;
+          padding-top: 100%;
+        }
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 50%;
+          transition: transform 0.3s;
+        }
         &::after {
           content: "";
           position: absolute;
@@ -120,17 +186,6 @@
           border-radius: inherit;
           background: rgba($b, 0.03);
         }
-      }
-      img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 50%;
-        transition: transform 0.3s;
       }
     }
     a {

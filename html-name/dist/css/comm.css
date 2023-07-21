@@ -278,17 +278,18 @@ legend {
 }
 
 .bg-gray {
-  background: red;
+  background: #eee;
 }
 
 #header {
+  position: relative;
+  z-index: 1000;
   border-bottom: 1px solid #000;
 }
 #header .inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
 }
 #header .head__right {
   display: flex;
@@ -311,6 +312,11 @@ legend {
   font-size: 34px;
 }
 
+#logo {
+  position: relative;
+  z-index: 1100;
+}
+
 .gnb-wrap .input-burger {
   position: absolute;
   top: 0;
@@ -319,14 +325,50 @@ legend {
   height: 0;
   opacity: 0;
 }
+.gnb-wrap .input-burger:checked + label .bar:nth-child(2) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+.gnb-wrap .input-burger:checked + label .bar:nth-child(3) {
+  opacity: 0;
+}
+.gnb-wrap .input-burger:checked + label .bar:nth-child(4) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+.gnb-wrap .input-burger:checked ~ #gnb {
+  right: 0;
+}
+.gnb-wrap .label-burger {
+  position: relative;
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40px;
+  height: 70px;
+}
 .gnb-wrap .label-burger .bar {
   display: block;
   width: 26px;
   height: 2px;
-  background: red;
+  background: #222;
+  transition: all 0.2s;
+}
+.gnb-wrap .label-burger span:nth-child(3) {
+  margin: 8px 0;
 }
 .gnb-wrap #gnb {
-  display: none;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  bottom: 0;
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffca00;
+  transition: all 0.3s;
 }
 
 .sec-g {
@@ -354,9 +396,27 @@ legend {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 200px;
-  padding-top: 100%;
   border-radius: 4px;
+}
+.sec-shopping .lst-shopping li .thumb-shopping::before {
+  content: "";
+  display: block;
+  height: 0;
+  padding-top: 100%;
+}
+.sec-shopping .lst-shopping li .thumb-shopping img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 50%;
+     object-position: 50%;
+  transition: transform 0.3s;
 }
 .sec-shopping .lst-shopping li .thumb-shopping::after {
   content: "";
@@ -368,19 +428,6 @@ legend {
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: inherit;
   background: rgba(0, 0, 0, 0.03);
-}
-.sec-shopping .lst-shopping li img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: 50%;
-     object-position: 50%;
-  transition: transform 0.3s;
 }
 .sec-shopping .lst-shopping a:hover img {
   transform: scale(1.2);
