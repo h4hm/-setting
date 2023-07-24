@@ -5,6 +5,9 @@
 // 공통요소 : 헤더, 풋터, 버튼, 아이콘, 박스
 
 // 공통클래스
+.wrap {
+  padding-top: 70px;
+}
 .container {
   padding: 0 $bothMargin;
 }
@@ -14,9 +17,13 @@
 
 // 헤더
 #header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
   border-bottom: 1px solid $b;
+  background: rgb(255, 255, 255, 0.5);
   .inner {
     display: flex;
     align-items: center;
@@ -43,7 +50,7 @@
     }
 
     .material-icons-outlined {
-      font-size: 34px;
+      font-size: 2.4286rem;
     }
   }
 }
@@ -81,6 +88,7 @@
   }
 
   .label-burger {
+    cursor: pointer;
     position: relative;
     z-index: 1100;
     display: flex;
@@ -119,15 +127,42 @@
   }
 }
 
+// 공통 슬라이드
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  position: relative;
+  height: 100vh;
+  text-align: center;
+  font-size: 1.2857rem;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: lightcyan;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
 // 메인
 
-// 메인공통
+// 메인-공통섹션
 .sec-g {
   // 패딩값 초기화되지않기위해 따로따로넣기
   padding-top: 50px;
   padding-bottom: 50px;
   .sec-tit {
-    font-size: 20px;
+    font-size: 1.4286rem;
     color: $b;
   }
   .sec-conts {
@@ -136,90 +171,87 @@
 }
 
 // 섹션별로잡아주기
-.sec-title {
-  .a {
+// .sec-title {
+//   .a {
+//   }
+//   .b {
+//   }
+// }
+
+// 이미지게시판
+.lst-thumb-two-column {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  li {
+    width: calc(50% - $spacingList / 2);
+    margin-bottom: $spacingList;
+
+    .thumb-shopping {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      border-radius: 4px;
+      // 가상공간으로 크기잡아주기
+      &::before {
+        content: "";
+        display: block;
+        height: 0;
+        padding-top: 100%;
+      }
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50%;
+        transition: transform 0.3s;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 1px solid rgba($b, 0.06);
+        border-radius: inherit;
+        background: rgba($b, 0.03);
+      }
+    }
   }
-  .b {
+  a {
+    &:hover {
+      img {
+        transform: scale(1.2);
+      }
+    }
   }
 }
-.sec-shopping {
-  .lst-shopping {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    li {
-      width: calc(50% - $spacingList / 2);
-      margin-bottom: $spacingList;
 
-      .thumb-shopping {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        border-radius: 4px;
-        // 가상공간으로 크기잡아주기
-        &::before {
-          content: "";
-          display: block;
-          height: 0;
-          padding-top: 100%;
-        }
-        img {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: 50%;
-          transition: transform 0.3s;
-        }
-        &::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          border: 1px solid rgba($b, 0.06);
-          border-radius: inherit;
-          background: rgba($b, 0.03);
-        }
-      }
-    }
-    a {
-      &:hover {
-        img {
-          transform: scale(1.2);
-        }
-      }
-    }
-  }
+.sec-shopping {
   .txt-shopping {
     margin-top: 10px;
     .txt-shopping__tit {
       display: block;
       margin-bottom: 10px;
-      font-size: 14px;
+      font-size: 1rem;
       color: $titDefault;
     }
     .txt-shopping__desc {
-      font-size: 12px;
+      font-size: 0.8571rem;
     }
-  }
-}
-.sec-title3 {
-  .a {
-  }
-  .b {
   }
 }
 
 // 풋터
 #footer {
   margin-bottom: 200px;
-  border-top: 10px solid $b;
+  border-top: 1px solid $b;
 }
 
 // Font AWESOME 사용시

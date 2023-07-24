@@ -28,7 +28,7 @@
   <!-- 라인어썸 -->
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css" />
-  <!-- 스와이퍼 -->
+  <!-- 스와이퍼 css -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <!-- 내 CSS -->
   <link rel="stylesheet" href="./dist/css/comm.css" />
@@ -37,7 +37,8 @@
   <!-- 스와이퍼 JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
   <!-- 내 JS -->
-  <script src="./dist/js/comm.js"></script>
+  <script defer src="./dist/js/include.js"></script>
+  <script defer src="./dist/js/comm.js"></script>
 </head>
 
 <body>
@@ -46,64 +47,63 @@
     <a href="#main"><span>컨텐츠 바로가기</span></a>
     <a href="#footer"><span>풋터 바로가기</span></a>
   </div>
-  <style></style>
   <div class="wrap">
-    <header id="header" class="container">
-      <div class="inner">
-        <h1 id="logo">
-          <a href="#">LOGO</a>
-        </h1>
-        <div class="head__right">
-          <div class="util">
-            <ul class="lst-util">
-              <li>
-                <!-- 링크 x 자바스크립트 동적처리 -->
-                <a href="javascript:void(0)" class="btn-g btn-menu">
-                  <span class="material-icons-outlined">
-                    language
-                  </span>
-                </a>
-              </li>
-              <li>
-                <button type="button" class="btn-g btn-search">
-                  <span class="material-icons-outlined">
-                    search
-                  </span>
-                </button>
-              </li>
-              <li>
-                <a href="#" class="btn-g btn-mypage">
-                  <span class="material-icons-outlined">
-                    account_circle
-                  </span>
-                </a>
-              </li>
-            </ul>
+    <header data-include-path="./outline/header.html"></header>
+    <div class="swiper slide-g slide-intro">
+      <!-- slide-g -> 공통클래스(특정디자인) -->
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img
+            src="https://images.unsplash.com/photo-1681276159290-29989388a728?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80"
+            alt="">
+          <div class="swiper-slide__txt">
+            <strong>Title</strong>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, perferendis?</p>
+            <a href="#">바로가기</a>
           </div>
-          <nav class="gnb-wrap">
-            <input type="checkbox" name="gnbNav" id="gnbNav" class="input-burger">
-            <label for="gnbNav" class="label-burger">
-              <span class="blind">전체메뉴보기</span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-            </label>
-            <div id="gnb">navi</div>
-          </nav>
         </div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
       </div>
-    </header>
-    <div class="slide-wrap slide-name">slide</div>
+      <!-- <div class="swiper-button-next"></div> -->
+      <!-- <div class="swiper-button-prev"></div> -->
+      <div class="swiper-pagination"></div>
+    </div>
+
     <main id="main">
       <!-- section : <제목>이 있는 그룹 -->
 
-      <section class="bg-gray container sec-g sec-title">
+      <section class="bg-gray container sec-g sec-event">
         <div class="inner">
-          <h2 class="sec-tit">섹션제목</h2>
+          <h2 class="sec-tit blind">Event</h2>
           <div class="sec-conts">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem nemo quasi, hic expedita consequuntur quaerat
-            vitae numquam repellat ea amet placeat sit, quos molestias accusamus dolor repudiandae maiores, quisquam
-            totam.
+            <ul class="lst-event">
+              <li>
+                <div>
+                  <img
+                    src="https://images.unsplash.com/photo-1689672235271-727de51355e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                    alt="Event_image">
+                </div>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </li>
+              <li>
+                <div>
+                  <img
+                    src="https://images.unsplash.com/photo-1689672235271-727de51355e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                    alt="Event_image">
+                </div>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </li>
+              <li>
+                <div>
+                  <img
+                    src="https://images.unsplash.com/photo-1689672235271-727de51355e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                    alt="Event_image">
+                </div>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </li>
+
+            </ul>
           </div>
         </div>
       </section>
@@ -111,7 +111,7 @@
         <div class="inner">
           <h2 class="sec-tit">섹션제목</h2>
           <div class="sec-conts">
-            <ul class="lst-shopping">
+            <ul class="lst-thumb-two-column">
               <li>
                 <a href="#">
                   <div class="thumb-shopping">
@@ -265,9 +265,7 @@
         </div>
       </section>
     </main>
-    <footer id="footer" class="container">
-      <div class="inner">풋터</div>
-    </footer>
+    <footer data-include-path="./outline/footer.html"></footer>
   </div>
 </body>
 
